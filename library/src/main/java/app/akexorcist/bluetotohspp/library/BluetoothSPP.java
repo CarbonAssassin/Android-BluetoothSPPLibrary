@@ -72,7 +72,7 @@ public class BluetoothSPP {
     }
     
     public interface OnDataReceivedListener {
-        public void onDataReceived(byte[] data, String message);
+        public void onDataReceived(byte[] data);
     }
     
     public interface BluetoothConnectionListener {
@@ -174,10 +174,9 @@ public class BluetoothSPP {
                 break;
             case BluetoothState.MESSAGE_READ:
                 byte[] readBuf = (byte[]) msg.obj;
-                String readMessage = new String(readBuf);
                 if(readBuf != null && readBuf.length > 0) {
                     if(mDataReceivedListener != null)
-                        mDataReceivedListener.onDataReceived(readBuf, readMessage);
+                        mDataReceivedListener.onDataReceived(readBuf);
                 }
                 break;
             case BluetoothState.MESSAGE_DEVICE_NAME:
