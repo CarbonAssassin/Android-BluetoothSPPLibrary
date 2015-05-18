@@ -62,8 +62,8 @@ public class TerminalActivity extends Activity {
         }
 
         bt.setOnDataReceivedListener(new OnDataReceivedListener() {
-            public void onDataReceived(byte[] data, String message) {
-                textRead.append(message + "\n");
+            public void onDataReceived(byte[] data) {
+               // textRead.append(message + "\n");
             }
         });
 
