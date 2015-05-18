@@ -268,10 +268,9 @@ public class BluetoothSPP {
     public void send(byte[] data, boolean CRLF) {
         if(mChatService.getState() == BluetoothState.STATE_CONNECTED) {
             if(CRLF) {
-                byte[] data2 = new byte[data.length + 2];
+                byte[] data2 = new byte[data.length + 1];
                 for(int i = 0 ; i < data.length ; i++) 
                     data2[i] = data[i];
-                data2[data2.length - 2] = 0x0A;
                 data2[data2.length - 1] = 0x0D;
                 mChatService.write(data2);
             } else {
